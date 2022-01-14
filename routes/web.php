@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -34,6 +35,7 @@ Route::get('/cart', function () {
 });
 
 
+
 require __DIR__ . '/auth.php';
 
 Route::get('/dashboard', function () {
@@ -49,6 +51,13 @@ Route::group(['prefix' => '/products', 'middleware' => 'auth'], function () {
 // user profile
 Route::group(['prefix' => '/user', 'middleware' => 'auth'], function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
+});
+
+// cart
+Route::group(['prefix' => '/cart', 'middleware' => 'auth', 'as' => 'cart.'], function () {
+    Route::get('/', [CartController::class, 'index'])->name('index');
+    Route::post('/add', [CartController::class, 'add'])->name('add');
+    Route::post('/delete', [CartController::class, 'delete'])->name('delete');
 });
 
 Route::middleware('auth')->post('/place_order', [OrderController::class, 'placeOrder']);

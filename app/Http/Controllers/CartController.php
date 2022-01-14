@@ -6,13 +6,18 @@ use App\Models\Cart;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
     public function index() {
-        $cartData = User::find(Auth::id())->cart()->first()->product();
+        $cartData = User::find(Auth::id())->cart()->get();
+        $user = User::find(Auth::id());
 
-        return $cartData;
+        return view('cart', [
+            'data' => $cartData,
+            'user' => $user,
+        ]);
     }
 
     public function add(Request $request) {
@@ -21,7 +26,7 @@ class CartController extends Controller
             'product_id' => $request->product_id,
         ]);
 
-        return null;
+        return Redirect::back();
     }
 
     public function delete(Request $request) {

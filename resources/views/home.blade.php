@@ -33,8 +33,10 @@ Homepage
                 </div>
                 <p class = "text-capitalize my-1" > {{ $d->name }} </p>
                 <span class = "fw-bold"> Rp {{ number_format($d->price, 0, ",", ".") }} </span><br>
-                    <form action="/cart" style="display : inline;">
-                        <button class="btn btn-primary"> Add to cart </button>
+                    <form method="POST" action="{{ route('cart.add') }}">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $d->id }}">
+                        <button type="submit" class="btn btn-primary"> Add to cart </button>
                     </form>
                     <form action="/cart" style="display : inline;">
                         <button class="btn btn-outline-success"> Buy </button>

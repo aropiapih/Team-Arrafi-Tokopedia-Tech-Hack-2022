@@ -35,14 +35,14 @@ Cart
                </tr>
              </thead>
              <tbody>
-             @for($i = 0; $i < 2; $i++)
+             @foreach ( $data as $d )
                <tr>
                  <th scope="row">
                    <div class="d-flex align-items-center">
                      <img src="{{asset('images/Baju.jpeg')}}" class="img-fluid rounded-3" style="width: 120px;" alt="Book">
                      <div class="flex-column ms-4">
-                       <p class="mb-2">Thinking, Fast and Slow</p>
-                       <p class="mb-0">Daniel Kahneman</p>
+                       <p class="mb-2">{{ $d->name }}</p>
+                       <p class="mb-0">{{ $d->description }}</p>
                      </div>
                    </div>
                  </th>
@@ -66,10 +66,10 @@ Cart
                    </div>
                  </td>
                  <td class="align-middle">
-                   <p class="mb-0" style="font-weight: 500;">Rp. 100.000</p>
+                   <p class="mb-0" style="font-weight: 500;">Rp {{ number_format($d->price, 0, ",", ".") }}</p>
                  </td>
                </tr>
-               @endfor
+               @endforeach
 
              </tbody>
            </table>
@@ -85,7 +85,7 @@ Cart
                      <div class="form-outline mb-4 mb-xl-5">
                        <label class="form-label" for="typeName">Name</label>
                        <input type="text" id="typeName" class="form-control form-control-lg"
-                         placeholder="Andre Taulany" />
+                         placeholder={{  }} />
 
                      </div>
 
