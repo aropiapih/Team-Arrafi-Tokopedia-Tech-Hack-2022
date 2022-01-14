@@ -23,6 +23,11 @@ Route::get('/profile', function () {
 Route::get('/shop-list', function () {
     return view('shop-list');
 });
+
+Route::get('/item-list', function () {
+    return view('item-list');
+});
+
 Route::get('/cart', function () {
     return view('cart');
 });
