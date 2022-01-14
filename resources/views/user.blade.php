@@ -32,8 +32,8 @@ User Statistics
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 <script>
-    var label = ["Januari", "Februari", "Maret", "April", "Mei", "Juni"]
-    var data = [200000, 400000, 50000, 0, 0, 0];
+    var label = <?php echo $spendPerMonthKey ?> ;
+    var data = <?php echo $spendPerMonth ?> ;
     var barChartData = {
         labels: label,
         datasets: [{

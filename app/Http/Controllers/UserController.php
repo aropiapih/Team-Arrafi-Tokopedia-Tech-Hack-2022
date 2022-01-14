@@ -24,16 +24,13 @@ class UserController extends Controller
         $orderDataPerMonth = $user->orderPerMonth();
 
         $spendPerMonth = [];
+        $spendPerMonthKey = [];
         foreach ($orderDataPerMonth as $key => $value) {
-            $spendPerMonth[$key] = $value->sum('amount');
+            array_push($spendPerMonth, $value->sum('amount'));
+            array_push($spendPerMonthKey, $key);
         }
 
-        $data = [
-            'userData' => $userData,
-            'spendPerMonth' => $spendPerMonth,
-        ];
-
-        return view('user', $data);
+        return view('user')->with('spendPerMonth',json_encode($spendPerMonth,JSON_NUMERIC_CHECK))->with('spendPerMonthKey', json_encode($spendPerMonthKey));
     }
 
     public function updateShoppingLimit(Request $request)
