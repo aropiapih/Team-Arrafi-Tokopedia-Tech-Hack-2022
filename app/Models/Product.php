@@ -11,7 +11,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * @property string $name
+ * @property int $price
+ * @property string $description
+ *
  * @method static Builder where($column, $operator = null, $value = null, $boolean = 'and')
+ * @method static Product find($id, $columns = ['*'])
  */
 class Product extends Model
 {

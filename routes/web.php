@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -52,3 +53,5 @@ Route::group(['prefix' => '/products', 'middleware' => 'auth'], function () {
 Route::group(['prefix' => '/user', 'middleware' => 'auth'], function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
 });
+
+Route::middleware('auth')->post('/place_order', [OrderController::class, 'placeOrder']);

@@ -5,6 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $user_id
+ * @property int $amount
+ * @property string $shipping_address
+ */
 class Order extends Model
 {
     use HasFactory;
