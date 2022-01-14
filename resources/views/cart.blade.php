@@ -85,7 +85,7 @@ Cart
                      <div class="form-outline mb-4 mb-xl-5">
                        <label class="form-label" for="typeName">Name</label>
                        <input type="text" id="typeName" class="form-control form-control-lg"
-                         placeholder={{  }} />
+                         placeholder={{ $user->name }} />
 
                      </div>
 

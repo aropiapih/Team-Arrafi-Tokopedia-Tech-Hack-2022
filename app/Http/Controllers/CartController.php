@@ -22,9 +22,9 @@ class CartController extends Controller
 
     public function index()
     {
-        $cartData = User::find(Auth::id())->cart()->first()->product();
+        $cartData = User::find(Auth::id())->cart()->get();
         $user = User::find(Auth::id());
-
+        
         return view('cart', [
             'data' => $cartData,
             'user' => $user,
