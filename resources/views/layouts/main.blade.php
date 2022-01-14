@@ -25,15 +25,15 @@
             <a class="navbar-brand" href="#">Tokopedia</a>
            
             <div class="" >
-                <a type="button" class="btn position-relative" > 
+                <a href="/cart" type="button" class="btn position-relative" > 
                     <i class="fa fa-shopping-cart"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge bg-primer"> 5 </span>
                 </a >
-                <a type="button" class="btn position-relative" > 
+                <a href="/shop-list"type="button" class="btn position-relative" > 
                    <i class="fa fa-clipboard-list"></i>
                 </a >
-                <a type ="button" class="btn">
-                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
+                <a href="/profile"type ="button" class="btn">
+                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
                 </a>
 
             </div>

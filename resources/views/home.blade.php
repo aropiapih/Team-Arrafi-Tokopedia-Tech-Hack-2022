@@ -33,8 +33,13 @@ Homepage
                 </div>
                 <p class = "text-capitalize my-1" > gray shirt </p>
                 <span class = "fw-bold"> Rp. 100.000 </span><br>
-                <button class="btn btn-primary"> Add to cart </button>
-                <button class="btn btn-outline-success"> Buy </button>
+                    <form action="/cart" style="display : inline;">
+                        <button class="btn btn-primary"> Add to cart </button>
+                    </form>
+                    <form action="/order" style="display : inline;">
+                        <button class="btn btn-outline-success"> Buy </button>
+                    </form>
+            
             </div>
         </div>
         @endfor
