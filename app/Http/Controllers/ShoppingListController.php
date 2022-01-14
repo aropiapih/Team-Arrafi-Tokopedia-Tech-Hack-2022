@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\ShoppingList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class ProductController extends Controller
+class ShoppingListController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,23 +26,7 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $filterData = Product::all();
-
-        dd($filterData);
-    }
-
-    /**
-     * Search and Display a listing of the resource.
-     * how to use -> /search?name={product_name}
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function search(Request $request)
-    {
-        //
-        $term = $request->get('name');
-        $filterData = Product::where('name', 'LIKE', '%' . $term . '%')
-            ->get();
+        $filterData = ShoppingList::all();
 
         dd($filterData);
     }
@@ -65,15 +50,26 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'name_list' => 'required',
+        ]);
+        $user_id = Auth::id();
+
+        ShoppingList::create([
+            'user_id' => $user_id,
+            'name_list' => $request->name_list,
+        ]);
+
+        // todo: do something after it
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\ShoppingList  $shoppingList
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(ShoppingList $shoppingList)
     {
         //
     }
@@ -81,10 +77,10 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\ShoppingList  $shoppingList
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(ShoppingList $shoppingList)
     {
         //
     }
@@ -93,10 +89,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\ShoppingList  $shoppingList
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, ShoppingList $shoppingList)
     {
         //
     }
@@ -104,11 +100,12 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\ShoppingList  $shoppingList
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(ShoppingList $shoppingList)
     {
         //
+        ShoppingList::destroy($shoppingList);
     }
 }
