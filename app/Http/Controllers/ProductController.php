@@ -25,9 +25,11 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $filterData = Product::all();
+        $filterData = Product::limit(16)->get();
 
-        dd($filterData);
+        return view('home', [
+            'data' => $filterData
+        ]);
     }
 
     /**
