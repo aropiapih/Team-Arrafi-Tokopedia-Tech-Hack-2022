@@ -1,0 +1,12 @@
+.navbar {    
+    box-shadow: 0 3px 9px 3px rgba(0,0,0,0.1);
+    margin-bottom : 10px;
+}
+
+.collection-img span{
+    top: 20px;
+    right: 20px;
+    width: 46px;
+    height: 46px;
+    border-radius : 50%;
+}
