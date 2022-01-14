@@ -13,12 +13,7 @@ class CreateCartProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('cart_product', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('cart_id');
-            $table->uuid('product_id');
-            $table->timestamps();
-        });
+        
     }
 
     /**
