@@ -25,7 +25,7 @@ class UserController extends Controller
 
         $spendPerMonth = [];
         foreach ($orderDataPerMonth as $key => $value) {
-            $spendPerMonth[$key] = $value->sum();
+            $spendPerMonth[$key] = $value->sum('amount');
         }
 
         $data = [

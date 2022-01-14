@@ -69,13 +69,13 @@ class User extends Authenticatable
 
     public function orderPerMonth() {
         $dateS = Carbon::now()->startOfMonth()->subMonth(6);
-        $dateE = Carbon::now()->startOfMonth();
+        $dateE = Carbon::now()->endOfMonth();
 
         return $this->hasMany(Order::class)
         ->whereBetween('created_at', [$dateS,$dateE])
         ->get()
         ->groupBy(function($val) {
-            return Carbon::parse($val->created_at)->format('m');
+            return Carbon::parse($val->created_at)->format('M');
         });
     }
 }
