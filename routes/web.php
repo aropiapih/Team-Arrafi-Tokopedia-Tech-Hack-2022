@@ -18,11 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/products', [ProductController::class, 'index'])->name('index');
-Route::get('/products/search', [ProductController::class, 'search'])->name('search');
+// products home and search
+Route::group(['prefix' => '/products', 'middleware' => 'auth'], function () {
+    Route::get('/', [ProductController::class, 'index'])->name('index');
+    Route::get('/search', [ProductController::class, 'search'])->name('search');
+});
