@@ -20,16 +20,16 @@ class UserController extends Controller
             'shopping_limit' => $user->shopping_limit,
         ];
 
-        $orderData = $user->order()->get();
+        $orderDataPerMonth = $user->orderPerMonth();
 
-        $orderDataPerMonth = $user->order()->get()->groupBy(function($val) {
-            return Carbon::parse($val->created_at)->format('m');
-        });
+        $spendPerMonth = [];
+        foreach ($orderDataPerMonth as $key => $value) {
+            $spendPerMonth[$key] = $value->sum();
+        }
 
         return [
             'userData' => $userData,
-            'orderData' => $orderData,
-            'orderDataPerMonth' => $orderDataPerMonth,
+            'spendPerMonth' => $spendPerMonth,
         ];
     }
 
