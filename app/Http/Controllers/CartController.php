@@ -10,8 +10,19 @@ use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
-    public function index() {
-        $cartData = User::find(Auth::id())->cart()->get();
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index()
+    {
+        $cartData = User::find(Auth::id())->cart()->first()->product();
         $user = User::find(Auth::id());
 
         return view('cart', [
@@ -20,7 +31,8 @@ class CartController extends Controller
         ]);
     }
 
-    public function add(Request $request) {
+    public function add(Request $request)
+    {
         Cart::insert([
             'user_id' => Auth::id(),
             'product_id' => $request->product_id,
@@ -29,7 +41,8 @@ class CartController extends Controller
         return Redirect::back();
     }
 
-    public function delete(Request $request) {
+    public function delete(Request $request)
+    {
         Cart::find($request->product_id)->delete();
 
         return null;
