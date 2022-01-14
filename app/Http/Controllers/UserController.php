@@ -9,6 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $user = User::find(Auth::id());
@@ -30,7 +40,7 @@ class UserController extends Controller
             array_push($spendPerMonthKey, $key);
         }
 
-        return view('user')->with('spendPerMonth',json_encode($spendPerMonth,JSON_NUMERIC_CHECK))->with('spendPerMonthKey', json_encode($spendPerMonthKey));
+        return view('user')->with('spendPerMonth', json_encode($spendPerMonth, JSON_NUMERIC_CHECK))->with('spendPerMonthKey', json_encode($spendPerMonthKey));
     }
 
     public function updateShoppingLimit(Request $request)

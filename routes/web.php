@@ -47,7 +47,7 @@ Route::group(['prefix' => '/products', 'middleware' => 'auth'], function () {
 });
 
 // user profile
-Route::group(['prefix' => '/user', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => '/profile', 'middleware' => 'auth'], function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
 });
 
