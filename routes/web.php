@@ -31,9 +31,7 @@ Route::get('/item-list', function () {
 Route::get('/cart', function () {
     return view('cart');
 });
-Route::get('/order', function () {
-    return view('order');
-});
+
 
 require __DIR__ . '/auth.php';
 

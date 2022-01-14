@@ -22,7 +22,8 @@ Shopping List
         </div>
     </div>
     @for ($i = 0; $i < 5 ;  $i++ )
-    <a href="/item-list"><div class="card" style="margin-top: 30px">
+    <a href="/item-list" style="text-decoration: none; color: black;">
+    <div class="card" style="margin-top: 30px">
         <div class="card-body">
             <div class="d-flex justify-content-between">
 
@@ -30,11 +31,12 @@ Shopping List
                     <h4 > Shopping List Name </h4>
                 </div>
                 <div class="ml-auto pt-1">
-                    <a type="button" class="float-right text-danger"><i class="fas fa-trash"></i></a>
+                    <a type="button" class="float-right text-danger" href="/delete"><i class="fas fa-trash"></i></a>
                 </div>
             </div>
         </div>
     </div>
+    </a>
     @endfor
 @endsection
 
