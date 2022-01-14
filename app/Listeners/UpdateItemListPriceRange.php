@@ -4,7 +4,6 @@ namespace App\Listeners;
 
 use App\Events\ProductDeleted;
 use App\Events\ProductSaved;
-use App\Events\ProductUpdated;
 use App\Models\ItemList;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\DB;
@@ -28,16 +27,6 @@ class UpdateItemListPriceRange implements ShouldQueue
      * @return void
      */
     public function handleProductSaved(ProductSaved $event)
-    {
-        $this->updatePriceRange();
-    }
-
-    public function handleProductCreated(ProductUpdated $event)
-    {
-        $this->updatePriceRange();
-    }
-
-    public function handleProductUpdated(ProductUpdated $event)
     {
         $this->updatePriceRange();
     }
