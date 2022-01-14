@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -10,29 +11,29 @@
 
     <!-- Font Awesome -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     @yield('prestyles')
 
     @yield('styles')
 
-    </head>
+</head>
 
-    <body>
+<body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">Tokopedia</a>
-                <div class="" >
-                    <a href="/cart" type="button" class="btn position-relative" >
+                <div class="">
+                    <a href="/cart" type="button" class="btn position-relative">
                         <i class="fa fa-shopping-cart"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge bg-primer"> 5 </span>
-                    </a >
-                    <a href="/shop-list"type="button" class="btn position-relative" >
-                       <i class="fa fa-clipboard-list"></i>
-                    </a >
-                    <a href="/profile"type ="button" class="btn">
+                    </a>
+                    <a href="/shop-list" type="button" class="btn position-relative">
+                        <i class="fa fa-clipboard-list"></i>
+                    </a>
+                    <a href="/profile" type="button" class="btn">
                         <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
                     </a>
 
@@ -48,7 +49,7 @@
         @yield('prescript')
 
         @yield('script')
-    </body>
+</body>
 
 
 </html>

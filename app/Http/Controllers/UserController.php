@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $user = User::find(Auth::id());
 
         $userData = [
@@ -27,13 +28,16 @@ class UserController extends Controller
             $spendPerMonth[$key] = $value->sum();
         }
 
-        return [
+        $data = [
             'userData' => $userData,
             'spendPerMonth' => $spendPerMonth,
         ];
+
+        return view('user', $data);
     }
 
-    public function updateShoppingLimit(Request $request) {
+    public function updateShoppingLimit(Request $request)
+    {
         User::find(Auth::id())->update([
             'shopping_limit' => $request->shopping_limit,
         ]);
