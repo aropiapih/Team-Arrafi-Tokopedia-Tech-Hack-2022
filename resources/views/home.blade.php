@@ -36,7 +36,7 @@ Homepage
                     <form action="/cart" style="display : inline;">
                         <button class="btn btn-primary"> Add to cart </button>
                     </form>
-                    <form action="/order" style="display : inline;">
+                    <form action="/cart" style="display : inline;">
                         <button class="btn btn-outline-success"> Buy </button>
                     </form>
 
@@ -46,6 +46,27 @@ Homepage
 
     </div>
 </div>
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Spending Alert</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>You have spent a lot of money. Make a careful financial plan. Do you want to set your spending limit?</p>
+                <p class="text-secondary"><small>If you agree, we'll warn you when you spend more than your limit.</small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 
@@ -54,5 +75,10 @@ Homepage
 @endsection
 
 @section('script')
+<script>
+$(document).ready(function() {
+    $("#myModal").modal("show");
+});
 
+</script>
 @endsection
