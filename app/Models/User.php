@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -57,5 +58,24 @@ class User extends Authenticatable
 
     public function order() {
         return $this->hasMany(Order::class);
+    }
+
+    public function spendThisMonth() {
+        return $this->hasMany(Order::class)
+        ->whereMonth('created_at', date('m'))
+        ->whereYear('created_at', date('Y'))
+        ->sum('amount');
+    }
+
+    public function orderPerMonth() {
+        $dateS = Carbon::now()->startOfMonth()->subMonth(6);
+        $dateE = Carbon::now()->startOfMonth();
+
+        return $this->hasMany(Order::class)
+        ->whereBetween('created_at', [$dateS,$dateE])
+        ->get()
+        ->groupBy(function($val) {
+            return Carbon::parse($val->created_at)->format('m');
+        });
     }
 }
