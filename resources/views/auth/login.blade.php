@@ -20,49 +20,57 @@
 
 <body class="font-sans antialiased">
     <div class="container">
-        <x-auth-card>
-            <x-slot name="logo">
+        <div class="card" style="margin-top : 100px">
+            <div class="card-header">
                 <h1>LOGIN</h1>
-            </x-slot>
+            </div>
 
-            <!-- Session Status -->
-            <x-auth-session-status class="mb-4" :status="session('status')" />
+            <div class="card-body">
+                   <!-- Session Status -->
+                               <x-auth-session-status class="mb-4" :status="session('status')" />
 
-            <!-- Validation Errors -->
-            <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                               <!-- Validation Errors -->
+                               <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
+                               <form method="POST" action="{{ route('login') }}">
+                                   @csrf
 
-                <!-- Email Address -->
-                <div class="mb-3">
-                    <x-label class="form-label" for="email" :value="__('Email')" />
-                    <x-input id="email" class="block mt-1 w-full form-control" type="email" name="email" :value="old('email')" required autofocus />
-                </div>
+                                   <!-- Email Address -->
+                                   <div class="mb-3">
+                                       <x-label class="form-label" for="email" :value="__('Email')" />
+                                       <x-input id="email" class="block mt-1 w-full form-control" type="email" name="email" :value="old('email')" required autofocus />
+                                   </div>
 
-                <!-- Password -->
-                <div class="mb-3">
-                    <x-label class="form-label" for="password" :value="__('Password')" />
+                                   <!-- Password -->
+                                   <div class="mb-3">
+                                       <x-label class="form-label" for="password" :value="__('Password')" />
 
-                    <x-input id="password" class="block mt-1 w-full form-control" type="password" name="password" required autocomplete="current-password" />
-                </div>
+                                       <x-input id="password" class="block mt-1 w-full form-control" type="password" name="password" required autocomplete="current-password" />
+                                   </div>
 
-                <!-- Remember Me -->
-                <div class="block mt-4">
-                    <label for="remember_me" class="inline-flex items-center">
-                        <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                        <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                    </label>
-                </div>
+                                   <!-- Remember Me -->
+                                   <div class="block mt-4">
+                                       <label for="remember_me" class="inline-flex items-center">
+                                           <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                                           <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                                       </label>
+                                   </div>
 
-                <div class="flex items-center justify-end mt-4">
+                                   <div class="flex items-center justify-end mt-4">
 
-                    <x-button class="ml-3 btn btn-primary">
-                        {{ __('Log in') }}
-                    </x-button>
-                </div>
-            </form>
-        </x-auth-card>
+                                       <x-button class="ml-3 btn btn-primary">
+                                           {{ __('Log in') }}
+                                       </x-button>
+                                        </form>
+                                        <button href="/register" class="ml-3 btn btn-primary">
+                                                                             <a href="/register" class="text-white" style="text-decoration: none">Register </a>
+                                                                       </button>
+                                   </div>
+
+
+            </div>
+
+        </div>
     </div>
 </body>
 
