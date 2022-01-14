@@ -14,12 +14,12 @@ Homepage
 
 @section('contents')
 
-    <form class="d-flex">
+<!--
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    </form>
+   </form><form class="d-flex"> -->
     <div class="collection-list mt-4 row gx-0 gy-3">
         @for ($i = 0; $i < 10 ;  $i++ )
-        <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+        <div class="col-md-3 col-lg-2 col-xl-3 p-2 w-50">
             <div class="collection-img position-relative">
                 <img src = "{{asset('images/Baju.jpeg')}}" class="w-100">
             </div>
