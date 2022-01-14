@@ -79,7 +79,7 @@ Homepage
 @section('script')
 <script>
 $(document).ready(function() {
-    let exceed_limit = {{ $exceed_limit }};
+    let exceed_limit = {{ $exceeded_limit }};
     if (exceed_limit) {
         $("#myModal").modal("show");
     }
