@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\ItemListSaving;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,6 +23,10 @@ class ItemList extends Model
         'name_item',
         'lower_price',
         'upper_price',
+    ];
+
+    protected $dispatchesEvents = [
+        'saving' => ItemListSaving::class,
     ];
 
     public function shoppingList()
