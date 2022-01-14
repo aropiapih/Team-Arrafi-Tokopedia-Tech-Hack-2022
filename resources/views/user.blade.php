@@ -15,6 +15,17 @@ User Statistics
 
 @section('contents')
 <div class="container">
+    <div class="card" style="margin:24px;">
+        <div class="card-body">
+            <h5 class="card-title">Limit Pengeluaran</h5>
+            <form action="{{ route('user.updateShoppingLimit') }}" method="post">
+                @csrf
+                <input name="shopping_limit" value="{{ $userShoppingLimit }}">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    </div>
+
     <div class="card" style="margin: 24px;">
         <div class="card-body">
             <h5 class="card-title">Statistik Pengeluaran</h5>

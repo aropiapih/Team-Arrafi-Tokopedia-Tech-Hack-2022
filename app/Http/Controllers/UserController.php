@@ -6,6 +6,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -40,7 +41,11 @@ class UserController extends Controller
             array_push($spendPerMonthKey, $key);
         }
 
-        return view('user')->with('spendPerMonth', json_encode($spendPerMonth, JSON_NUMERIC_CHECK))->with('spendPerMonthKey', json_encode($spendPerMonthKey));
+        return view('user', [
+            'spendPerMonth' => json_encode($spendPerMonth, JSON_NUMERIC_CHECK),
+            'spendPerMonthKey' => json_encode($spendPerMonthKey),
+            'userShoppingLimit' => $userData['shopping_limit'],
+        ]);
     }
 
     public function updateShoppingLimit(Request $request)
@@ -49,6 +54,6 @@ class UserController extends Controller
             'shopping_limit' => $request->shopping_limit,
         ]);
 
-        return null;
+        return Redirect::back();
     }
 }

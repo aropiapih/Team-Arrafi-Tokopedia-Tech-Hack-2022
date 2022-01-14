@@ -49,8 +49,9 @@ Route::group(['prefix' => '/products', 'middleware' => 'auth'], function () {
 });
 
 // user profile
-Route::group(['prefix' => '/profile', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => '/profile', 'middleware' => 'auth', 'as' => 'user.'], function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
+    Route::post('/update', [UserController::class, 'updateShoppingLimit'])->name('updateShoppingLimit');
 });
 
 // cart
