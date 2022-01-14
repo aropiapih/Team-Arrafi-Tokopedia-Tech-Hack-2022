@@ -32,4 +32,12 @@ class UserController extends Controller
             'orderDataPerMonth' => $orderDataPerMonth,
         ];
     }
+
+    public function updateShoppingLimit(Request $request) {
+        User::find(Auth::id())->update([
+            'shopping_limit' => $request->shopping_limit,
+        ]);
+
+        return null;
+    }
 }
