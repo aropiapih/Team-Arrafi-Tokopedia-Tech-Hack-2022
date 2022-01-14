@@ -43,6 +43,8 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'shopping_limit' => 500000,
+            'notif_limit' => false,
         ]);
 
         event(new Registered($user));

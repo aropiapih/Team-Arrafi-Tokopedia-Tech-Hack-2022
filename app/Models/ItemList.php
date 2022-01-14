@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name_item
  * @property int $lower_price
  * @property int $upper_price
+ *
+ * @method static all($columns = ['*'])
  */
 class ItemList extends Model
 {
