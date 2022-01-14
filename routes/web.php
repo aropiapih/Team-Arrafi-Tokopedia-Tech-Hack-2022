@@ -15,14 +15,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+Route::get('/profile', function () {
+    return view('profile');
+});
+Route::get('/shop-list', function () {
+    return view('shop-list');
+});
+Route::get('/cart', function () {
+    return view('cart');
+});
+Route::get('/order', function () {
+    return view('order');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/products', [ProductController::class, 'index'])->name('index');
-Route::get('/products/search', [ProductController::class, 'search'])->name('search');
+// products home and search
+Route::group(['prefix' => '/products', 'middleware' => 'auth'], function () {
+    Route::get('/', [ProductController::class, 'index'])->name('index');
+    Route::get('/search', [ProductController::class, 'search'])->name('search');
+});

@@ -5,6 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $list_id
+ * @property string $name_item
+ * @property int $lower_price
+ * @property int $upper_price
+ */
 class ItemList extends Model
 {
     use HasFactory;
@@ -12,9 +18,12 @@ class ItemList extends Model
     protected $fillable = [
         'list_id',
         'name_item',
+        'lower_price',
+        'upper_price',
     ];
 
-    public function shoppingList() {
+    public function shoppingList()
+    {
         return $this->belongsTo(ShoppingList::class);
     }
 }
