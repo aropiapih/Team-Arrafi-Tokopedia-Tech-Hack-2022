@@ -33,7 +33,11 @@ Shopping List
                     <p> 40 rb - 50 rb </p>
                 </div>
                 <div class="ml-auto pt-3">
-                    <a type="button" class="float-right text-primary"><i class="fas fa-search fa-2x"></i></a>
+                    <form action="{{ route('search') }}" method="GET" >
+                    @csrf
+                        <input type="hidden" value="Durable" name="name" >
+                        <button type="submit" class="btn pt-1 text-primary"><i class="fas fa-search fa-2x"></i></button>
+                    </form>
                 </div>
             </div>
         </div>

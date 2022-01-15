@@ -53,11 +53,24 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         //
+
         $term = $request->get('name');
+
         $filterData = Product::where('name', 'LIKE', '%' . $term . '%')
             ->get();
 
-        dd($filterData);
+       $user = Auth::user();
+               $exceeded_limit = $user->spendThisMonth() > $user->shopping_limit ? 1 : 0;
+
+               if (!$user->notif_limit && $exceeded_limit) {
+                   $user->notif_limit = true;
+                   $user->save();
+               }
+
+               return view('home', [
+                   'data' => $filterData,
+                   'exceeded_limit' => $exceeded_limit,
+               ]);
     }
 
     /**
