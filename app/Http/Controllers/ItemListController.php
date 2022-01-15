@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\ItemList;
+use App\Models\ShoppingList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class ItemListController extends Controller
 {
@@ -25,8 +28,18 @@ class ItemListController extends Controller
     public function index(int $shoppinglist_id)
     {
         //
-        $filterData = ItemList::where('list_id', $shoppinglist_id)->get();
-        dd($filterData);
+        $shoppingList = ShoppingList::find($shoppinglist_id);
+
+        if ($shoppingList->user_id != Auth::id()) {
+            return Redirect::home();
+        }
+
+        $filterData = $shoppingList->itemList()->get();
+
+        return view('item-list', [
+            'data' => $filterData,
+            'id' => $shoppinglist_id,
+        ]);
     }
 
     /**
@@ -58,7 +71,7 @@ class ItemListController extends Controller
             'name_item' => $request->name_item,
         ]);
 
-        // todo: do something after it
+        return Redirect::back();
     }
 
     /**
@@ -70,6 +83,13 @@ class ItemListController extends Controller
     public function show(ItemList $itemList)
     {
         //
+    }
+
+    public function delete(Request $request)
+    {
+        ItemList::find($request->item_list_id)->delete();
+
+        return Redirect::back();
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ItemListController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -23,12 +24,6 @@ Route::get('/', [ProductController::class, 'index'])->name('index');
 Route::get('/profile', function () {
     return view('profile');
 });
-
-Route::get('/item-list', function () {
-    return view('item-list');
-});
-
-
 
 require __DIR__ . '/auth.php';
 
@@ -60,6 +55,13 @@ Route::group(['prefix' => '/shop-list', 'middleware' => 'auth', 'as' => 'shoppin
     Route::get('/', [ShoppingListController::class, 'index'])->name('index');
     Route::post('/add', [ShoppingListController::class, 'store'])->name('store');
     Route::post('/delete', [ShoppingListController::class, 'delete'])->name('delete');
+});
+
+// Item list
+Route::group(['prefix' => '/shop-list/{id}', 'middleware' => 'auth', 'as' => 'itemList.'], function () {
+    Route::get('/', [ItemListController::class, 'index'])->name('index');
+    Route::post('/add', [ItemListController::class, 'store'])->name('store');
+    Route::post('/delete', [ItemListController::class, 'delete'])->name('delete');
 });
 
 Route::middleware('auth')->post('/place_order', [OrderController::class, 'placeOrder']);

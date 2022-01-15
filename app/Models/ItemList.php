@@ -18,6 +18,8 @@ class ItemList extends Model
 {
     use HasFactory;
 
+    protected $table = 'item_list';
+
     protected $fillable = [
         'list_id',
         'name_item',
