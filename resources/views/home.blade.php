@@ -59,11 +59,11 @@ Homepage
             </div>
             <div class="modal-body">
                 <p>You have spent a lot of money. Make a careful financial plan. Do you want to set your spending limit?</p>
-                <p class="text-secondary"><small>If you agree, we'll warn you when you spend more than your limit.</small></p>
+                <p class="text-secondary"><small>If you agree, we will warn you when you spend more than your limit.</small></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                <button type="button" class="btn btn-primary">Yes</button>
+                <a href="/profile" ><button type="button" class="btn btn-primary">Yes</button></a>
             </div>
         </div>
     </div>
