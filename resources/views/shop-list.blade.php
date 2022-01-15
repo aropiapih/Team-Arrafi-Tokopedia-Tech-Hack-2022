@@ -26,7 +26,7 @@ Shopping List
         </div>
     </div>
     @foreach ($data as $d)
-    <a href="/item-list" style="text-decoration: none; color: black;">
+    <a href="{{ route('itemList.index', $d->id) }}" style="text-decoration: none; color: black;">
     <div class="card" style="margin-top: 30px">
         <div class="card-body">
             <div class="d-flex justify-content-between">
