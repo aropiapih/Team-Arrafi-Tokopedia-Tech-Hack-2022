@@ -51,4 +51,18 @@ class OrderController extends Controller
 
         DB::commit();
     }
+
+    public function store(Request $request)
+    {
+
+
+        Order::create([
+                    'user_id' => $request->post('user_id'),
+                    'amount' => $request->post('amount'),
+                    'shipping_address' => $request->post('shipping_address'),
+                ]);
+return redirect()->action([ProductController::class, 'index']);
+    }
+
+
 }

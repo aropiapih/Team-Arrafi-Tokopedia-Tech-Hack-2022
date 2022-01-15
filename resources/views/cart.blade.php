@@ -78,21 +78,25 @@
 
                     <div class="card shadow-2-strong mb-5 mb-lg-0" style="border-radius: 16px;">
                         <div class="card-body p-4">
-
+                        <form action="{{ route('order') }}" method="post">
+                        @csrf
                             <div class="row">
                                 <div class="col-md-6 col-lg-4 col-xl-6">
                                     <div class="row">
                                         <div class="col-12 col-xl-6">
                                             <div class="form-outline mb-4 mb-xl-5">
                                                 <label class="form-label" for="typeName">Name</label>
-                                                <input type="text" id="typeName" class="form-control form-control-lg"
-                                                       placeholder={{ $user->name }} />
+                                                <input type="text" id="name" name="user_id" class="form-control form-control-lg"
+                                                       placeholder="Recipient name"/>
+
+                                                <input type="hidden" name="user_id" class="form-control form-control-lg"
+                                                                                                       placeholder="Recipient name" value="{{$user->id}}"/>
 
                                             </div>
 
                                             <div class="form-outline mb-4 mb-xl-5">
                                                 <label class="form-label" for="typeExp">Shipping Adress</label>
-                                                <input type="text" id="typeExp" class="form-control form-control-lg"
+                                                <input type="text" id="typeExp" name="shipping_address" class="form-control form-control-lg"
                                                        placeholder="Address"
                                                 />
                                             </div>
@@ -100,7 +104,9 @@
 
                                     </div>
                                 </div>
+
                                 <div class="col-lg-4 col-xl-3">
+
                                     <div class="d-flex justify-content-between" style="font-weight: 500;">
                                         <p class="mb-2">Subtotal</p>
                                         <p class="mb-2" id="products_subtotal">Rp 200.000</p>
@@ -118,7 +124,8 @@
                                         <p class="mb-2" id="total">Rp. 220.000</p>
                                     </div>
 
-                                    <button type="button" class="btn btn-primary btn-block btn-lg">
+                                    <button type="submit" class="btn btn-primary btn-block btn-lg">
+                                    <input type="hidden" name="amount" id="amount">
                                         <div class="d-flex justify-content-between">
                                             <span>Checkout</span>
                                         </div>
@@ -126,7 +133,7 @@
 
                                 </div>
                             </div>
-
+                        </form>
                         </div>
                     </div>
 
@@ -179,6 +186,7 @@
                     currency: 'IDR'
                 }).format(total + 20000)
             )
+            $('#amount').val(total+20000)
         }
 
         $(document).ready(function () {

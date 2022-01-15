@@ -24,7 +24,7 @@ class CartController extends Controller
     {
         $cartData = User::find(Auth::id())->cart()->get();
         $user = User::find(Auth::id());
-        
+
         return view('cart', [
             'data' => $cartData,
             'user' => $user,

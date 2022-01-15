@@ -64,4 +64,5 @@ Route::group(['prefix' => '/shop-list/{id}', 'middleware' => 'auth', 'as' => 'it
     Route::post('/delete', [ItemListController::class, 'delete'])->name('delete');
 });
 
+Route::post('/order', [OrderController::class, 'store'])->name('order');
 Route::middleware('auth')->post('/place_order', [OrderController::class, 'placeOrder']);
