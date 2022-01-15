@@ -39,6 +39,7 @@ class ItemListController extends Controller
         return view('item-list', [
             'data' => $filterData,
             'id' => $shoppinglist_id,
+            'name_shopping_list' => $shoppingList->name_list
         ]);
     }
 

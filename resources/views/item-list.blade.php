@@ -15,7 +15,7 @@ Shopping List
 @section('contents')
     <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30" >
         <div class ="margin-top-100">
-                <h4 class="mt-3 ml-3 tx-medium text-truncate">Nama Shopping List</h4>
+                <h4 class="mt-3 ml-3 tx-medium text-truncate">{{$name_shopping_list}}</h4>
                 <form action="{{ route('itemList.store', $id) }}" method="post">
                     @csrf
                     <div class="d-flex justify-content-between">
