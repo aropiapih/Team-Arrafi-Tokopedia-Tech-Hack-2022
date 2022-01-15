@@ -23,7 +23,7 @@ Shopping List
                         <input name="name_item">
                         <button type="submit" class="btn pt-3"><i class="far fa-plus-square fa-2x"></i></button>
                     </div>
-                </form>    
+                </form>
         </div>
     </div>
     @foreach ($data as $d)
@@ -35,7 +35,7 @@ Shopping List
                         @csrf
                         <input name='item_list_id' type="hidden" value="{{ $d->id }}">
                         <button type="submit" class="btn btn-danger float-right"><i class="fas fa-trash"></i></button>
-                    </form>  
+                    </form>
                 </div>
                 <div class="">
                     <h4 > {{$d->name_item}} </h4>
@@ -44,7 +44,7 @@ Shopping List
                 <div class="ml-auto pt-3">
                     <form action="{{ route('search') }}" method="GET" >
                     @csrf
-                        <input type="hidden" value="Durable" name="name" >
+                        <input type="hidden" value="{{$d->name_item}}" name="name" >
                         <button type="submit" class="btn pt-1 text-primary"><i class="fas fa-search fa-2x"></i></button>
                     </form>
                 </div>
