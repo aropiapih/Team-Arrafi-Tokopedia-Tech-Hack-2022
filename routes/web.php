@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ShoppingListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,16 +23,9 @@ Route::get('/', [ProductController::class, 'index'])->name('index');
 Route::get('/profile', function () {
     return view('profile');
 });
-Route::get('/shop-list', function () {
-    return view('shop-list');
-});
 
 Route::get('/item-list', function () {
     return view('item-list');
-});
-
-Route::get('/cart', function () {
-    return view('cart');
 });
 
 
@@ -59,6 +53,13 @@ Route::group(['prefix' => '/cart', 'middleware' => 'auth', 'as' => 'cart.'], fun
     Route::get('/', [CartController::class, 'index'])->name('index');
     Route::post('/add', [CartController::class, 'add'])->name('add');
     Route::post('/delete', [CartController::class, 'delete'])->name('delete');
+});
+
+// shopping list
+Route::group(['prefix' => '/shop-list', 'middleware' => 'auth', 'as' => 'shoppingList.'], function () {
+    Route::get('/', [ShoppingListController::class, 'index'])->name('index');
+    Route::post('/add', [ShoppingListController::class, 'store'])->name('store');
+    Route::post('/delete', [ShoppingListController::class, 'delete'])->name('delete');
 });
 
 Route::middleware('auth')->post('/place_order', [OrderController::class, 'placeOrder']);

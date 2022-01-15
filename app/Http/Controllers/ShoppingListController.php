@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ShoppingList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class ShoppingListController extends Controller
 {
@@ -26,9 +27,11 @@ class ShoppingListController extends Controller
     public function index()
     {
         //
-        $filterData = ShoppingList::all();
+        $filterData = ShoppingList::where('user_id', Auth::id())->get();
 
-        dd($filterData);
+        return view('shop-list', [
+            'data' => $filterData,
+        ]);
     }
 
     /**
@@ -60,7 +63,7 @@ class ShoppingListController extends Controller
             'name_list' => $request->name_list,
         ]);
 
-        // todo: do something after it
+        return Redirect::back();
     }
 
     /**
@@ -95,6 +98,12 @@ class ShoppingListController extends Controller
     public function update(Request $request, ShoppingList $shoppingList)
     {
         //
+    }
+
+    public function delete(Request $request) {
+        ShoppingList::find($request->shop_list_id)->delete();
+
+        return Redirect::back();
     }
 
     /**
